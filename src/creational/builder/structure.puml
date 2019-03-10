@@ -1,0 +1,34 @@
+@startuml
+
+class Director {
+    builder
+    construct()
+}
+Director o-- Builder
+class Builder {
+    makeTitle()
+    makeString()
+    makeItems()
+}
+Builder <|-- TextBuilder
+Builder <|-- HTMLBuilder
+class TextBuilder {
+    buffer
+    makeTitle()
+    makeString()
+    makeItems()
+    close()
+    getResult()
+}
+class HTMLBuilder {
+    buffer
+    makeTitle()
+    makeString()
+    makeItems()
+    close()
+    getResult()
+}
+Client --> Director : use
+Client --> TextBuilder : use
+Client --> HTMLBuilder : use
+@enduml
