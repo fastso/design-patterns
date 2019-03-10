@@ -1,0 +1,33 @@
+@startuml
+abstract class AbstractFactory {
+    CreateProductA()
+    CreateProductB()
+}
+AbstractFactory <|-- ConcreteFactory1
+AbstractFactory <|-- ConcreteFactory2
+class ConcreteFactory1 {
+    CreateProductA()
+    CreateProductB()
+}
+class ConcreteFactory2 {
+    CreateProductA()
+    CreateProductB()
+}
+
+abstract class AbstractProductA {
+}
+AbstractProductA <|-- ProductA1
+AbstractProductA <|-- ProductA2
+
+abstract class AbstractProductB {
+}
+AbstractProductB <|-- ProductB1
+AbstractProductB <|-- ProductB2
+
+ConcreteFactory1 --> ProductA1 : create
+ConcreteFactory1 --> ProductB1 : create
+ConcreteFactory2 --> ProductA2 : create
+ConcreteFactory2 --> ProductB2 : create
+
+Client --> AbstractFactory : use
+@enduml
